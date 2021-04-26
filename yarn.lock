@@ -11047,6 +11047,23 @@
   dependencies:
     "escape-string-regexp" "^2.0.0"
 
+"stackby-lib-hoc@^1.0.0":
+  "integrity" "sha512-fLLTV6HQnQdbOgjIgYDu6SUcEpRpdRnmx3AbzxGIol0ViQy5UtfE+vS98V1A4Kf1ZCyaNQlxsa7Kf2O5L5bYJw=="
+  "resolved" "https://registry.npmjs.org/stackby-lib-hoc/-/stackby-lib-hoc-1.0.0.tgz"
+  "version" "1.0.0"
+  dependencies:
+    "@babel/cli" "^7.13.14"
+    "@babel/preset-env" "^7.13.15"
+    "@testing-library/jest-dom" "^5.11.4"
+    "@testing-library/react" "^11.1.0"
+    "@testing-library/user-event" "^12.1.10"
+    "progresssbar" "^1.0.0"
+    "progrresssbar" "^1.0.0"
+    "react" "^17.0.2"
+    "react-dom" "^17.0.2"
+    "react-scripts" "4.0.3"
+    "web-vitals" "^1.0.1"
+
 "stackframe@^1.1.1":
   "integrity" "sha512-GrdeshiRmS1YLMYgzF16olf2jJ/IzxXY9lhKOskuVziubpTYcYqyOwYeJKzQkwy7uN0fYSsbsC4RQaXf9LCrYA=="
   "resolved" "https://registry.yarnpkg.com/stackframe/-/stackframe-1.2.0.tgz"

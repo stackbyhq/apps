@@ -1,19 +1,9 @@
-import React, { useState, useEffect } from "react";
-// import ProgressBar from "./component/progressBar";
-import ProgressBar from "progrresssbar";
+import React from "react";
+import ParentContainer from "./component";
 
-const App = () => {
-  const [completed, setCompleted] = useState(0);
-
-  useEffect(() => {
-    setInterval(() => setCompleted(Math.floor(Math.random() * 100) + 1), 2000);
-  }, []);
-
-  return (
-    <div className="App">
-      <ProgressBar bgcolor={"#6a1b9a"} completed={completed} />
-    </div>
-  );
+const App = ({ text, columnSchema }) => {
+  console.log(columnSchema, "columnSchema");
+  return <div className="App">{text}</div>;
 };
 
-export default App;
+export default ParentContainer(App, "blk0hFSH9tPcltVxu3");
