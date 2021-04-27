@@ -1,5 +1,6 @@
 import React from "react";
 import ParentContainer from "./component";
+// import ParentContainer from "../";
 
 const App = ({ blockData, tables }) => {
   console.log(blockData, "blockData");
