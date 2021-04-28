@@ -59,7 +59,6 @@ const withWidgets = (WrappedComponent, blockID) => {
                   tablesLength: tables.length,
                 });
                 tables.forEach((table) => {
-                  // now we will get every viewId of particular table
                   axios
                     .get(
                       `https://dev9.stackby.com/api/v1/dashboardviews/${blockID}/${table.id}` // Api for getting views for a particular table
@@ -67,26 +66,28 @@ const withWidgets = (WrappedComponent, blockID) => {
                     .then((respo) => {
                       let viewsArr = [...respo.data.data];
                       let views = {};
-                      viewsArr.forEach((view) => {
+                      viewsArr.forEach((view, index) => {
                         axios
                           .get(
                             `https://dev9.stackby.com/api/v1/tabledata/${blockID}/${table.id}/${view.id}`
                           )
-                          .then((respo) => {
-                            views[view.name] = respo.data.data;
+                          .then((response) => {
+                            views[view.name] = { ...response.data.data };
+                            if (index === viewsArr.length - 1) {
+                              let newTables = [...this.state.tables];
+                              newTables.push({
+                                tableName: table.name,
+                                tableId: table.id,
+                                views,
+                              });
+                              this.setState({
+                                tables: newTables,
+                              });
+                            }
                           })
                           .catch((err) => {
                             console.log(err, "error in fetching tableData");
                           });
-                      });
-                      let newTables = [...this.state.tables];
-                      newTables.push({
-                        tableName: table.name,
-                        tableId: table.id,
-                        views,
-                      });
-                      this.setState({
-                        tables: newTables,
                       });
                     })
                     .catch((err) => {

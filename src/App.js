@@ -4,7 +4,7 @@ import ParentContainer from "./component";
 
 const App = ({ blockData, tables }) => {
   console.log(blockData, "blockData");
-  console.log(tables, "tables");
+  console.log(tables[0].views.Grid, "tables");
 
   return <div className="App">{blockData.type + "block"}</div>;
 };
