@@ -96,6 +96,7 @@ const withWidgets = (WrappedComponent, blockID) => {
             <WrappedComponent
               {...this.props}
               blockData={this.state.blockData}
+              tables={this.state.tables}
             />
           </div>
         );

@@ -73,6 +73,7 @@ const withWidgets = (WrappedComponent, blockID) => {
                           )
                           .then((response) => {
                             views[view.name] = { ...response.data.data };
+
                             if (index === viewsArr.length - 1) {
                               let newTables = [...this.state.tables];
                               newTables.push({
@@ -100,8 +101,6 @@ const withWidgets = (WrappedComponent, blockID) => {
     }
 
     componentDidUpdate() {
-      console.log("inside comDidUpdate");
-
       if (!this.state.loadingChanged) {
         if (this.state.tables.length == this.state.tablesLength) {
           this.setState({
@@ -121,6 +120,7 @@ const withWidgets = (WrappedComponent, blockID) => {
             WrappedComponent,
             _extends({}, this.props, {
               blockData: this.state.blockData,
+              tables: this.state.tables,
             })
           )
         );
