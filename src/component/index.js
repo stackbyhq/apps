@@ -1,5 +1,6 @@
 import React from "react";
 import axios from "axios";
+import "./style.css";
 
 const withWidgets = (WrappedComponent, blockID) => {
   class WithWidgets extends React.Component {
@@ -111,7 +112,20 @@ const withWidgets = (WrappedComponent, blockID) => {
           </div>
         );
       } else {
-        return <div>loading</div>;
+        return (
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              justifyContent: "center",
+              height: "80vh",
+            }}
+          >
+            <div className="loader"></div>
+            <h3>Hang in there, your data is arriving soon...</h3>
+          </div>
+        );
       }
     }
   }

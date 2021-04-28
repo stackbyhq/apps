@@ -1,5 +1,6 @@
 import React from "react";
 import axios from "axios";
+import "./main.css";
 
 function _extends() {
   _extends =
@@ -135,7 +136,26 @@ const withWidgets = (WrappedComponent, blockID) => {
           )
         );
       } else {
-        return /*#__PURE__*/ React.createElement("div", null, "loading");
+        return /*#__PURE__*/ React.createElement(
+          "div",
+          {
+            style: {
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              justifyContent: "center",
+              height: "80vh",
+            },
+          },
+          /*#__PURE__*/ React.createElement("div", {
+            className: "loader",
+          }),
+          /*#__PURE__*/ React.createElement(
+            "h3",
+            null,
+            "Hang in there, your data is arriving soon..."
+          )
+        );
       }
     }
   }
