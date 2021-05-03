@@ -1,9 +1,9 @@
+/* eslint-disable prettier/prettier */
 /* eslint-disable react/self-closing-comp */
 /* eslint-disable react/no-did-update-set-state */
 /* eslint-disable eqeqeq */
 /* eslint-disable prefer-const */
 /* eslint-disable prettier/prettier */
-/* eslint-disable no-unused-vars */
 import React from 'react'
 import axios from 'axios'
 import styles from './styles.module.css'
@@ -47,7 +47,6 @@ const withWidgets = (WrappedComponent, blockID) => {
                   tablesLength: tables.length
                 })
                 tables.forEach((table) => {
-                  // now we will get every viewId of particular table
                   axios
                     .get(
                       `https://dev9.stackby.com/api/v1/dashboardviews/${blockID}/${table.id}` // Api for getting views for a particular table
@@ -55,28 +54,28 @@ const withWidgets = (WrappedComponent, blockID) => {
                     .then((respo) => {
                       let viewsArr = [...respo.data.data]
                       let views = {}
-
-                      viewsArr.forEach((view) => {
+                      viewsArr.forEach((view, index) => {
                         axios
                           .get(
                             `https://dev9.stackby.com/api/v1/tabledata/${blockID}/${table.id}/${view.id}`
                           )
-                          .then((respo) => {
-                            views[view.name] = respo.data.data
+                          .then((response) => {
+                            views[view.name] = { ...response.data.data }
+                            if (index === viewsArr.length - 1) {
+                              let newTables = [...this.state.tables]
+                              newTables.push({
+                                tableName: table.name,
+                                tableId: table.id,
+                                views
+                              })
+                              this.setState({
+                                tables: newTables
+                              })
+                            }
                           })
                           .catch((err) => {
                             console.log(err, 'error in fetching tableData')
                           })
-                      })
-
-                      let newTables = [...this.state.tables]
-                      newTables.push({
-                        tableName: table.name,
-                        tableId: table.id,
-                        views
-                      })
-                      this.setState({
-                        tables: newTables
                       })
                     })
                     .catch((err) => {
@@ -89,7 +88,6 @@ const withWidgets = (WrappedComponent, blockID) => {
     }
 
     componentDidUpdate() {
-      console.log('inside comDidUpdate')
       if (!this.state.loadingChanged) {
         if (this.state.tables.length == this.state.tablesLength) {
           this.setState({ loading: false, loadingChanged: true })

@@ -5,7 +5,7 @@ import 'stackby-hoc-lib/dist/index.css'
 
 const App = ({ blockData, tables }) => {
   console.log(blockData, 'blockData')
-  console.log(tables, 'tables')
+  console.log(tables[0].views, 'tables')
 
   return <div className='App'>{blockData.type + 'block'}</div>
 }
