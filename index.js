@@ -165,3 +165,4 @@ const withWidgets = (WrappedComponent, blockID) => {
 };
 
 export default withWidgets;
+// "react-app/jest"
