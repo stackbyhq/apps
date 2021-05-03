@@ -3,7 +3,7 @@
 ## How to use in in your code
 
 ```
-npm install 'stackby-lib-hoc'
+npm install 'stackby-hoc-lib'
 ```
 
 ```
@@ -27,7 +27,7 @@ npm install 'stackby-lib-hoc'
 
 ```javascript
 import React from 'react'
-import ParentContainer from 'stackby-lib-hoc'
+import ParentContainer from 'stackby-hoc-lib'
 
 const App = ({ blockData, tables }) => {
   console.log(blockData, 'blockData')
