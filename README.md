@@ -26,15 +26,19 @@ npm install 'stackby-lib-hoc'
 ## Here is an example
 
 ```javascript
-import React from "react";
-import ParentContainer from "stackby-lib-hoc";
+import React from 'react'
+import ParentContainer from 'stackby-lib-hoc'
 
 const App = ({ blockData, tables }) => {
-  console.log(blockData, "blockData");
-  console.log(tables, "tables");
+  console.log(blockData, 'blockData')
+  console.log(tables, 'tables')
 
-  return <div className="App">Your code here</div>;
-};
+  return <div className='App'>Your code here</div>
+}
 
-export default ParentContainer(App, blockid);
+export default ParentContainer(App, blockid)
 ```
+
+## License
+
+stackbyhq © [stackbyhq](https://github.com/stackbyhq)
