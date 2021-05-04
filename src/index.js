@@ -53,20 +53,25 @@ const withWidgets = (WrappedComponent, blockID) => {
                     )
                     .then((respo) => {
                       let viewsArr = [...respo.data.data]
-                      let views = {}
+                      let views = []
                       viewsArr.forEach((view, index) => {
                         axios
                           .get(
                             `https://dev9.stackby.com/api/v1/tabledata/${blockID}/${table.id}/${view.id}`
                           )
                           .then((response) => {
-                            views[view.name] = { ...response.data.data }
+                            views.push({
+                              viewName: response.data.data.viewData.name,
+                              viewId: response.data.data.viewId,
+                              tableData: { ...response.data.data },
+                              tableId: response.data.data.tableId
+                            })
                             if (index === viewsArr.length - 1) {
                               let newTables = [...this.state.tables]
                               newTables.push({
                                 tableName: table.name,
                                 tableId: table.id,
-                                views
+                                views: [...views]
                               })
                               this.setState({
                                 tables: newTables
@@ -98,7 +103,7 @@ const withWidgets = (WrappedComponent, blockID) => {
     render() {
       if (!this.state.loadDescriptionBlock) {
         return (
-          <div>
+          <div style={{ display: 'flex' }}>
             <WrappedComponent
               {...this.props}
               blockData={this.state.blockData}
@@ -107,7 +112,7 @@ const withWidgets = (WrappedComponent, blockID) => {
         )
       } else if (!this.state.loading) {
         return (
-          <div>
+          <div style={{ display: 'flex' }}>
             <WrappedComponent
               {...this.props}
               tables={this.state.tables}
